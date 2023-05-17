@@ -1,8 +1,9 @@
+import Shopbycategory from "../../Shopbycategory/Shopbycategory";
 
 const Home = () => {
     return (
         <div>
-            this is homepage
+            <Shopbycategory></Shopbycategory>
         </div>
     );
 };

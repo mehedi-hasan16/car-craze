@@ -19,7 +19,8 @@ import Login from "../components/page/Login/Login";
         },
         {
             path:'/alltoy',
-            element:<Alltoys></Alltoys>
+            element:<Alltoys></Alltoys>,
+            loader: ()=>fetch('http://localhost:5000/cars'),
         },
         {
             path:'/blog',

@@ -1,8 +1,10 @@
+import { useLoaderData } from "react-router-dom";
 
 const Alltoys = () => {
+    const cars = useLoaderData();
     return (
         <div>
-            this is all toy
+        all cars : {cars.length}
         </div>
     );
 };
