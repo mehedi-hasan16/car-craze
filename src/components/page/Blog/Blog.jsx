@@ -2,7 +2,7 @@
 const Blog = () => {
     return (
         <div>
-            
+            this is blog
         </div>
     );
 };
