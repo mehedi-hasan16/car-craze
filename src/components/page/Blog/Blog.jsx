@@ -1,7 +1,7 @@
 
 const Blog = () => {
     return (
-        <div>
+        <div className="min-vh-100">
             this is blog
         </div>
     );

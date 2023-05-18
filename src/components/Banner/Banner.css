@@ -1,7 +1,7 @@
 .banner {
-    background-image: url(../../assets/background_banner.png);
+    min-height: 70vh;
+    background-image: linear-gradient(to right, #3e82e9, #3e82e900);
     background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
     mix-blend-mode: multiply;
     

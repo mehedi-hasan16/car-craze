@@ -19,9 +19,9 @@ const NavigationBar = () => {
     }
 
     return (
-        <div className="container">
+        <div>
             <Navbar bg="light" expand="lg">
-                <Container fluid>
+                <Container >
                     <img src={logo} alt="" className="me-2" style={{ width: '80px' }} />
                     <Navbar.Brand href="/">Car Craze</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />

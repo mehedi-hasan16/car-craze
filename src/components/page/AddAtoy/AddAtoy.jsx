@@ -65,7 +65,7 @@ const AddAtoy = () => {
         .catch(error=>console.log(error))
     }
     return (
-        <div className="container">
+        <div className="container my-4 min-vh-100">
             <h2 className="text-center my-4">Add toy</h2>
             <Form onSubmit={handleSubmit}>
                 <Row xs={1} md={2}>

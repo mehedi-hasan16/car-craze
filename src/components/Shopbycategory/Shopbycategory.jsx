@@ -35,7 +35,8 @@ const Shopbycategory = () => {
     console.log(data);
 
     return (
-        <div className='container'>
+        <div className='container my-4'>
+            <h2 className='text-center my-4'>Shop by category</h2>
             <Tabs>
                 <TabList>
                     {/* <Tab>Title 1</Tab>

@@ -1,20 +1,24 @@
 import { Button, Card, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import './CategoryCart.css'
 
 const CategoryCart = ({ cars }) => {
-    const {_id, picture, name, price, rating } = cars;
+    const {_id, photo, toyName, price, rating } = cars;
+    console.log(cars);
     return (
         <div>
             <Col>
                 <Card>
-                    <Card.Img variant="top" src={picture} />
+                    <div className="crop-container">
+                    <Card.Img variant="top" src={photo} className="w-100 img-fluid" />
+                    </div>
                     <Card.Body>
-                        <Card.Title>{name}</Card.Title>
+                        <Card.Title>{toyName}</Card.Title>
                         <Card.Text>
-                            <div>Price:{price}</div>
+                            <div>Price: ${price}</div>
                             <div>Rating:{rating}</div>
                         </Card.Text>
-                        <Link to={`/details/${_id}`}><Button variant="primary">More Details</Button></Link>
+                        <Link to={`/details/${_id}`}><Button variant="primary">Details</Button></Link>
                     </Card.Body>
                 </Card>
             </Col>
