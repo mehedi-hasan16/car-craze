@@ -1,7 +1,8 @@
 import { Button, Card, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const CategoryCart = ({ cars }) => {
-    const {picture, name, price, rating } = cars;
+    const {_id, picture, name, price, rating } = cars;
     return (
         <div>
             <Col>
@@ -13,7 +14,7 @@ const CategoryCart = ({ cars }) => {
                             <div>Price:{price}</div>
                             <div>Rating:{rating}</div>
                         </Card.Text>
-                        <Button variant="primary">More Details</Button>
+                        <Link to={`/details/${_id}`}><Button variant="primary">More Details</Button></Link>
                     </Card.Body>
                 </Card>
             </Col>

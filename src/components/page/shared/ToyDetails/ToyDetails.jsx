@@ -27,9 +27,9 @@ const ToyDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className="text-center">
+            {/* <div className="text-center">
             <Link to='/alltoy'><Button variant="primary">Back to all toy</Button></Link>
-            </div>
+            </div> */}
         </div>
 
     );
