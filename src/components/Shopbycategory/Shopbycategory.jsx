@@ -18,21 +18,21 @@ const Shopbycategory = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setData(data))
-      };
+    };
 
-      useEffect(()=>{
+    useEffect(() => {
         handleTabClick('Truck')
-      },['Truck'])
+    }, ['Truck'])
 
 
 
-      const tabs = [
+    const tabs = [
         { title: 'Truck', data: 'Truck' },
         { title: 'Sports Car', data: 'Sports Car' },
         { title: 'Regular Car', data: 'Regular Car' }
-      ];
+    ];
 
-      console.log(data);
+    console.log(data);
 
     return (
         <div className='container'>
@@ -41,17 +41,27 @@ const Shopbycategory = () => {
                     {/* <Tab>Title 1</Tab>
                     <Tab>Title 2</Tab> */}
                     {
-                        tabs.map((tab, idx)=><Tab key={idx} onClick={() => handleTabClick(tab.data)}>{tab.title}</Tab>)
+                        tabs.map((tab, idx) => <Tab key={idx} onClick={() => handleTabClick(tab.data)}>{tab.title}</Tab>)
                     }
                 </TabList>
 
-                <TabPanel>
+                {/* <TabPanel>
                 <Row xs={1} md={3} className="g-4">
                     {
                         data.map(cars=><CategoryCart key={cars._id} cars={cars}></CategoryCart>)
                     }
                 </Row>
-                </TabPanel>
+                </TabPanel> */}
+                {tabs.map(idx => (
+                    <TabPanel key={idx}>
+                        <Row xs={1} md={3} className="g-4">
+                            {
+                                data.map(cars => <CategoryCart key={cars._id} cars={cars}></CategoryCart>)
+                            }
+                        </Row>
+                    </TabPanel>
+                ))}
+
             </Tabs>
         </div>
     );
