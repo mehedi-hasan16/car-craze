@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import CategoryCart from './CategoryCart';
@@ -19,16 +19,23 @@ const Shopbycategory = () => {
             .then(res => res.json())
             .then(data => setData(data))
       };
+
+      useEffect(()=>{
+        handleTabClick('Truck')
+      },['Truck'])
+
+
+
       const tabs = [
-        { title: 'Tab 1', data: 'RC Cars' },
-        { title: 'Tab 2', data: 'Data for Tab 2' },
-        { title: 'Tab 3', data: 'Data for Tab 3' }
+        { title: 'Truck', data: 'Truck' },
+        { title: 'Sports Car', data: 'Sports Car' },
+        { title: 'Regular Car', data: 'Regular Car' }
       ];
 
       console.log(data);
 
     return (
-        <div>
+        <div className='container'>
             <Tabs>
                 <TabList>
                     {/* <Tab>Title 1</Tab>

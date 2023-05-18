@@ -36,6 +36,20 @@ const AddAtoy = () => {
             description
         }
         console.log(toyData);
+
+        fetch('http://localhost:5000/cars',{
+            method:'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(toyData)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.insertedId){
+                alert('product successfully added')
+            }
+        })
     }
     return (
         <div className="container">
