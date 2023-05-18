@@ -1,4 +1,6 @@
 import { Button } from "react-bootstrap";
+import { FaRegStar, FaStar } from "react-icons/fa";
+import Rating from "react-rating";
 import { Link, useLoaderData } from "react-router-dom";
 
 
@@ -20,7 +22,12 @@ const ToyDetails = () => {
                             <p className="card-text">Category: {category}</p>
                             <p className="card-text">Quantity: {quantity}</p>
                             <p className="card-text">Description: {description}</p>
-                            <p className="card-text">Rating: {rating}</p>
+                            <p className="card-text">Rating: <Rating
+                                    placeholderRating={rating}
+                                    emptySymbol={<FaRegStar className="text-warning"></FaRegStar>}
+                                    placeholderSymbol={<FaStar className="text-warning"></FaStar>}
+                                    fullSymbol={<FaStar className="text-warning"></FaStar>}
+                                /></p>
                             <p className="card-text">Seller Name: {sellerName}</p>
                             <p className="card-text">Seller Email: {sellerEmail}</p>
                         </div>

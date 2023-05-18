@@ -51,7 +51,7 @@ const MyToy = () => {
     }
     return (
         <div className="container min-vh-100">
-            <h2 className="text-center my-4">Total Product you have added: {setToyData.length}</h2>
+            <h2 className="text-center my-4">Total Product you have added: {toyData.length}</h2>
             <Table striped bordered hover>
                 <thead>
                     <tr>
