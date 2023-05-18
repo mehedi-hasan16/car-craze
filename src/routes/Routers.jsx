@@ -11,6 +11,7 @@ import Signup from "../components/page/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import AddAtoy from "../components/page/AddAtoy/AddAtoy";
 import MyToy from "../components/page/MyToy/MyToy";
+import UpdateInfo from "../components/page/UpdateInfo/UpdateInfo";
   
 
   const router = createBrowserRouter([
@@ -51,6 +52,11 @@ import MyToy from "../components/page/MyToy/MyToy";
         {
           path:'/mytoy',
           element:<PrivateRoute><MyToy></MyToy></PrivateRoute>
+        },
+        {
+          path:'/update/:id',
+          element:<PrivateRoute><UpdateInfo></UpdateInfo></PrivateRoute>,
+          loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`)
         }
         
       ]

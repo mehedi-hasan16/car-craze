@@ -8,7 +8,7 @@ const Alltoys = () => {
     
     return (
         <div className="container">
-            all cars : {cars.length}
+            <h2 className="text-center my-4">Total Toys : {cars.length}</h2>
             <Table striped bordered hover>
                 <thead>
                     <tr>
