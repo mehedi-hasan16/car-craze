@@ -3,24 +3,27 @@ import ActiveLink from "../ActiveLink/ActiveLink";
 import { useContext } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import logo from '../../../../assets/websiteLogo.png'
 
 const NavigationBar = () => {
-    const {user, logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     console.log(user);
-    const handleLogout = ()=>{
+    const handleLogout = () => {
         logOut()
-        .then(()=>{
+            .then(() => {
 
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
+
     return (
-        <div>
+        <div className="container">
             <Navbar bg="light" expand="lg">
                 <Container fluid>
-                    <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                    <img src={logo} alt="" className="me-2" style={{ width: '80px' }} />
+                    <Navbar.Brand href="/">Car Craze</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -29,19 +32,26 @@ const NavigationBar = () => {
                             navbarScroll
                         >
                             <ActiveLink to='/'>Home</ActiveLink>
-                            <ActiveLink to='/alltoy'>All-Toy</ActiveLink>
+                            <ActiveLink to='/alltoy'>All Toy</ActiveLink>
                             <ActiveLink to='/blog'>Blog</ActiveLink>
-                            
+                            {
+                                user
+                                    ? <span className="d-flex">
+                                        <ActiveLink to='/addtoy'>Add Toy</ActiveLink>
+                                        <ActiveLink to='/mytoy'>My Toy</ActiveLink>
+                                    </span>
+                                    : ''
+                            }
                         </Nav>
                         {
-                            user 
-                            ?<img src={user?.photoURL} alt="" style={{ width: '35px' }} className="rounded-circle mx-3" />
-                            :<span>{user?.email}</span>
+                            user
+                                ? <img src={user?.photoURL} alt="" style={{ width: '35px' }} className="rounded-circle mx-3" />
+                                : <span>{user?.email}</span>
                         }
                         {
                             user
-                            ? <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
-                            : <Link to='/login'><Button variant="outline-success">Login</Button></Link>
+                                ? <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
+                                : <Link to='/login'><Button variant="outline-success">Login</Button></Link>
                         }
                     </Navbar.Collapse>
                 </Container>

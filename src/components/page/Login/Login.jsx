@@ -7,7 +7,7 @@ const Login = () => {
     const {userLogin,  googleSignin }= useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const mainLocation = location.state?.from?.pathname ||'/';
+    const pageFrom = location.state?.from?.pathname ||'/';
     const [error, setError]= useState([])
 
     const handleSubmit= event =>{
@@ -23,7 +23,7 @@ const Login = () => {
             const loggedUser= result.user;
             console.log(loggedUser);
             form.reset();
-            navigate(mainLocation , {replace:true})
+            navigate(pageFrom , {replace:true})
         })
         .catch((error)=>{
             setError(error.message);
@@ -34,7 +34,7 @@ const Login = () => {
         .then(result=>{
             const loggedUser = result.user;
             console.log(loggedUser);
-            navigate(mainLocation , {replace:true})
+            navigate(pageFrom , {replace:true})
         })
         .catch(error=>{
             setError(error.message);

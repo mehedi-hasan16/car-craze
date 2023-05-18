@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Col, Dropdown, Form, Row } from "react-bootstrap";
+import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from 'sweetalert2'
 
 const AddAtoy = () => {
-    const [selectedItem, setSelectedItem] = useState('Select Car Category');
+    const {user} = useContext(AuthContext);
+    const [selectedItem, setSelectedItem] = useState("Select category");
+    const [error, setError] = useState(null)
     const handleSelect = (eventKey, event) => {
         setSelectedItem(event.target.text);
     };
@@ -24,6 +28,10 @@ const AddAtoy = () => {
         alert('please enter positive number');
         return;
        }
+       else if(category === "Select category"){
+        setError('Please Select Category');
+        return;
+       }
         const toyData ={
             sellerName, 
             sellerEmail, 
@@ -35,7 +43,6 @@ const AddAtoy = () => {
             quantity, 
             description
         }
-        console.log(toyData);
 
         fetch('http://localhost:5000/cars',{
             method:'POST',
@@ -47,36 +54,43 @@ const AddAtoy = () => {
         .then(res=>res.json())
         .then(data=>{
             if(data.insertedId){
-                alert('product successfully added')
+                Swal.fire(
+                    'Successfully!',
+                    'Your toy added successfully!',
+                    'success'
+                  )
+                  form.reset();
             }
         })
+        .catch(error=>console.log(error))
     }
     return (
         <div className="container">
+            <h2 className="text-center my-4">Add toy</h2>
             <Form onSubmit={handleSubmit}>
                 <Row xs={1} md={2}>
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Seller Name</Form.Label>
-                            <Form.Control type="text" name="sellerName" placeholder="Seller Name" />
+                            <Form.Control type="text" name="sellerName" defaultValue={user?.displayName} placeholder="Seller Name" readOnly/>
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Seller Email</Form.Label>
-                            <Form.Control type="email" name="email" placeholder="Seller Email" />
+                            <Form.Control type="email" name="email" defaultValue={user?.email} placeholder="Seller Email" readOnly />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Name of the toy</Form.Label>
-                            <Form.Control type="text" name="toyName" placeholder="Name of toy" />
+                            <Form.Control type="text" name="toyName" placeholder="Name of toy" required />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Photo URL</Form.Label>
-                            <Form.Control type="text" name="photo" placeholder="Photo URL" />
+                            <Form.Control type="text" name="photo" placeholder="Photo URL" required />
                         </Form.Group>
                     </Col>
                     <Col>
@@ -94,38 +108,40 @@ const AddAtoy = () => {
                                     <Dropdown.Item >Regular Car</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-
+                            <span className="text-danger">{error}</span>
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Price</Form.Label>
-                            <Form.Control type="number" name="price" placeholder="Price" />
+                            <Form.Control type="number" name="price" placeholder="Price" required />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Rating</Form.Label>
-                            <Form.Control type="number" name="rating" placeholder="Rating should be 1-5" />
+                            <Form.Control type="number" name="rating" placeholder="Rating should be 1-5" required />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Available quantity</Form.Label>
-                            <Form.Control type="number" name="quantity" placeholder="Available quantity" />
+                            <Form.Control type="number" name="quantity" placeholder="Available quantity" required />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control type="text" name="description" placeholder="Description" />
+                            <Form.Control type="text" name="description" placeholder="Description" required />
                         </Form.Group>
                     </Col>
 
                 </Row>
+                <div className="d-flex justify-content-center">
                 <Button variant="primary" type="submit">
-                    Submit
+                    Add Toy
                 </Button>
+                </div>
             </Form>
         </div>
     );
