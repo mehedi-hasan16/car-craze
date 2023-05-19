@@ -26,7 +26,7 @@ import UpdateInfo from "../components/page/UpdateInfo/UpdateInfo";
         {
             path:'/alltoy',
             element:<Alltoys></Alltoys>,
-            loader: ()=>fetch('http://localhost:5000/cars'),
+            loader: ()=>fetch('http://localhost:5000/carsLimit'),
         },
         {
             path:'/blog',
