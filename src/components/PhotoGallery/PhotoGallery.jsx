@@ -1,24 +1,36 @@
 import { useEffect, useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const PhotoGallery = () => {
-    const [images, setImages]=useState ([])
-    useEffect(()=>{
+    const [images, setImages] = useState([])
+    useEffect(() => {
         fetch('http://localhost:5000/images')
-        .then(res=>res.json())
-        .then(data=>setImages(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setImages(data))
+    }, [])
+
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+    }, []);
+
     return (
-        <div className='container'>
+        <div className='container'
+            data-aos="fade-down"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
+        >
             <h1 className='text-center my-5'>Toy Gallery</h1>
-            <ImageGallery 
-            items={images} 
-            showPlayButton={false}
-            showFullscreenButton={false}
-            autoPlay={true}
-            showBullets={true}
-            
+            <ImageGallery
+                items={images}
+                showPlayButton={false}
+                showFullscreenButton={false}
+                autoPlay={true}
+                showBullets={true}
+
             />
         </div>
     );

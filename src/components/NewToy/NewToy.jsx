@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import {Row } from "react-bootstrap";
 import NewToyCard from "./NewToyCard";
 
+
 const NewToy = () => {
     const [newToy, setNewToy] = useState([]);
-
     useEffect(() => {
         fetch('http://localhost:5000/newinshop')
             .then(res => res.json())

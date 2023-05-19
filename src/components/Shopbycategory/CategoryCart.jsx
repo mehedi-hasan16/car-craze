@@ -3,14 +3,23 @@ import { Link } from "react-router-dom";
 import './CategoryCart.css'
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const CategoryCart = ({ cars }) => {
+
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+      }, []);
+      
     const { _id, photo, toyName, price, rating } = cars;
     console.log(cars);
     return (
         <div>
             <Col>
-                <Card>
+                <Card data-aos="fade-left">
                     <div className="crop-container">
                         <Card.Img variant="top" src={photo} className="w-100 img-fluid" />
                     </div>
