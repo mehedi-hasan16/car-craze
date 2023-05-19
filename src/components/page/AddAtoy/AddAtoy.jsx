@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Button, Col, Dropdown, Form, Row } from "react-bootstrap";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet";
 
 const AddAtoy = () => {
     const {user} = useContext(AuthContext);
@@ -66,6 +67,9 @@ const AddAtoy = () => {
     }
     return (
         <div className="container my-4 min-vh-100">
+            <Helmet>
+                <title>Car Craze | Add toy</title>
+            </Helmet>
             <h2 className="text-center my-4">Add toy</h2>
             <Form onSubmit={handleSubmit}>
                 <Row xs={1} md={2}>

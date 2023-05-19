@@ -4,6 +4,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet";
 
 const Signup = () => {
     const {createUser} = useContext(AuthContext)
@@ -61,6 +62,9 @@ const Signup = () => {
     }
     return (
         <div className="min-vh-100">
+            <Helmet>
+                <title>Car Craze | Signup</title>
+            </Helmet>
             <h1 className="text-center my-4">Register your account</h1>
            <Form onSubmit={handleRegister} className="w-25 mx-auto border rounded p-4">
            <Form.Group className="mb-3" controlId="formBasicName">

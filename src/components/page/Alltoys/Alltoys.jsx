@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 
 const Alltoys = () => {
@@ -47,6 +48,9 @@ const Alltoys = () => {
 
     return (
         <div className="container min-vh-100">
+            <Helmet>
+                <title>Car Craze | All toy</title>
+            </Helmet>
             <div>
                 <Form onSubmit={handleSearch} className="d-flex justify-content-center mt-4">
                     <Form.Group className="w-25 me-2" controlId="formBasicPassword">

@@ -3,6 +3,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet";
 
 
 
@@ -61,6 +62,9 @@ const MyToy = () => {
 
     return (
         <div className="container min-vh-100">
+            <Helmet>
+                <title>Car Craze | My toy</title>
+            </Helmet>
             <h2 className="text-center my-4">Total Product you have added: {toyData.length}</h2>
 
             <div className="my-4">

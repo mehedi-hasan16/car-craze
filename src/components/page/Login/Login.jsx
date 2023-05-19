@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { Button,  Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { Helmet } from "react-helmet";
 const Login = () => {
     const {userLogin,  googleSignin }= useContext(AuthContext);
     const navigate = useNavigate();
@@ -42,6 +43,9 @@ const Login = () => {
     }
     return (
         <div className="min-vh-100">
+            <Helmet>
+                <title>Car Craze | Login</title>
+            </Helmet>
         <h1 className="text-center my-4">Login your account</h1>
         <Form onSubmit={handleSubmit} className="w-25 mx-auto border rounded p-4">
             <Form.Group className="mb-3" controlId="formBasicEmail">
