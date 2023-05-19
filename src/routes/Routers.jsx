@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddAtoy from "../components/page/AddAtoy/AddAtoy";
 import MyToy from "../components/page/MyToy/MyToy";
 import UpdateInfo from "../components/page/UpdateInfo/UpdateInfo";
+import NotFound from "../components/page/NotFound/NotFound";
   
 
   const router = createBrowserRouter([
@@ -61,6 +62,10 @@ import UpdateInfo from "../components/page/UpdateInfo/UpdateInfo";
         
       ]
     },
+    {
+      path:'*',
+      element:<NotFound></NotFound>
+    }
   ]);
 
   export default router;
