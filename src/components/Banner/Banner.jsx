@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 const Banner = () => {
     return (
         <div className="banner">
-            <div className="mb-3 container border">
+            <div className="container p-4">
                 <Row xs={1} md={2}>
-                    <Col className="d-flex align-items-center ">
+                    <Col className="py-4">
                         <div>
                         <h1 className="text-white">Fuel your car craze <br /> Best online car toy selles</h1>
                         <p className="text-white my-4">Unleash your inner child with Car Craze, the ultimate destination for<br/> toy car enthusiasts. Explore a wide selection of toy cars, from sleek <br/> sports cars to rugged off-road trucks </p>
@@ -16,7 +16,7 @@ const Banner = () => {
                         <Link to='signup'><Button variant="outline-dark">Signup</Button></Link>
                         </div>
                     </Col>
-                    <Col className="my-4 d-flex align-items-center justify-content-center">
+                    <Col>
                         <img src={bannerImg} alt="" className="img-fluid" />
                     </Col>
                 </Row>

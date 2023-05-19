@@ -11,6 +11,7 @@ const PhotoGallery = () => {
     },[])
     return (
         <div className='container'>
+            <h1 className='text-center my-5'>Toy Gallery</h1>
             <ImageGallery 
             items={images} 
             showPlayButton={false}

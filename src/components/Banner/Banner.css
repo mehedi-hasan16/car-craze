@@ -1,8 +1,5 @@
 .banner {
-    min-height: 70vh;
-    background-image: linear-gradient(to right, #3e82e9, #3e82e900);
-    background-position: center;
-    background-size: cover;
-    mix-blend-mode: multiply;
+    min-height: 50vh;
+    background-image: linear-gradient(to right, #3e82e9, #3e82e933);
     
 }
