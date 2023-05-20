@@ -8,7 +8,6 @@ import { Tooltip } from 'react-tooltip'
 
 const NavigationBar = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
     const handleLogout = () => {
         logOut()
             .then(() => {

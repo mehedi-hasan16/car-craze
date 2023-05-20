@@ -7,7 +7,7 @@ import 'aos/dist/aos.css';
 const PhotoGallery = () => {
     const [images, setImages] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/images')
+        fetch('https://car-craze-server.vercel.app/images')
             .then(res => res.json())
             .then(data => setImages(data))
     }, [])

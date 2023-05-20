@@ -6,7 +6,6 @@ import ReactLoading from 'react-loading';
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     let location = useLocation();
-    console.log(location.pathname);
     if (loading) {
         return <div className="d-flex justify-content-center mt-5"><ReactLoading type={'spin'} color={'#0275d8'} height={80} width={80} /></div>
     }

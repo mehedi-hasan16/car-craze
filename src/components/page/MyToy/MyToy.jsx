@@ -11,8 +11,7 @@ const MyToy = () => {
     const { user } = useContext(AuthContext);
     const [toyData, setToyData] = useState([])
     const [sortOrder, setSortOrder] = useState('ascending');
-    console.log(sortOrder);
-    const url = `http://localhost:5000/userCas?sellerEmail=${user?.email}&sort=${sortOrder}`;
+    const url = `https://car-craze-server.vercel.app/userCas?sellerEmail=${user?.email}&sort=${sortOrder}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -37,7 +36,7 @@ const MyToy = () => {
 
     }
     const toyDelete = (id) => {
-        fetch(`http://localhost:5000/cars/${id}`, {
+        fetch(`https://car-craze-server.vercel.app/cars/${id}`, {
             method: 'DELETE'
 
         })

@@ -16,7 +16,7 @@ const Alltoys = () => {
     useEffect(() => {
         if (btnClicked) {
 
-            fetch('http://localhost:5000/cars')
+            fetch('https://car-craze-server.vercel.app/cars')
                 .then(res => res.json())
                 .then(data => setCars(data))
         }
@@ -26,7 +26,7 @@ const Alltoys = () => {
         setError('')
         event.preventDefault();
         const toyName = event.target.name.value;
-        fetch('http://localhost:5000/search',{
+        fetch('https://car-craze-server.vercel.app/search',{
             method:'POST',
             headers:{
                 'Content-Type': 'application/json'

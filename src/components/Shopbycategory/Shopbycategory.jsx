@@ -8,13 +8,9 @@ import { Row } from 'react-bootstrap';
 const Shopbycategory = () => {
 
     const [data, setData] = useState([])
-    // const handleCategorySearch = categoryName => {
-
-    //     const url = `http://localhost:5000/search?category=${categoryName}`;
-    // }
+   
     const handleTabClick = (data) => {
-        console.log(data);
-        const url = `http://localhost:5000/search?category=${data}`;
+        const url = `https://car-craze-server.vercel.app/search?category=${data}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setData(data))
@@ -32,27 +28,16 @@ const Shopbycategory = () => {
         { title: 'Regular Car', data: 'Regular Car' }
     ];
 
-    console.log(data);
-
     return (
         <div className='container'>
             <h1 className='text-center my-5'>Shop by category</h1>
             <Tabs>
                 <TabList>
-                    {/* <Tab>Title 1</Tab>
-                    <Tab>Title 2</Tab> */}
                     {
                         tabs.map((tab, idx) => <Tab key={idx} onClick={() => handleTabClick(tab.data)}>{tab.title}</Tab>)
                     }
                 </TabList>
 
-                {/* <TabPanel>
-                <Row xs={1} md={3} className="g-4">
-                    {
-                        data.map(cars=><CategoryCart key={cars._id} cars={cars}></CategoryCart>)
-                    }
-                </Row>
-                </TabPanel> */}
                 {tabs.map(idx => (
                     <TabPanel key={idx}>
                         <Row xs={1} md={3} className="g-4">

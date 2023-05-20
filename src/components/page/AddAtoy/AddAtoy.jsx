@@ -56,7 +56,7 @@ const AddAtoy = () => {
             description
         }
 
-        fetch('http://localhost:5000/cars',{
+        fetch('https://car-craze-server.vercel.app/cars',{
             method:'POST',
             headers:{
                 'content-type': 'application/json'

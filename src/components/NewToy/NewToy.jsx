@@ -6,7 +6,7 @@ import NewToyCard from "./NewToyCard";
 const NewToy = () => {
     const [newToy, setNewToy] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/newinshop')
+        fetch('https://car-craze-server.vercel.app/newinshop')
             .then(res => res.json())
             .then(data => setNewToy(data))
     }, [])

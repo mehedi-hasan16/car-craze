@@ -27,12 +27,12 @@ import NotFound from "../components/page/NotFound/NotFound";
         {
             path:'/alltoy',
             element:<Alltoys></Alltoys>,
-            loader: ()=>fetch('http://localhost:5000/carsLimit'),
+            loader: ()=>fetch('https://car-craze-server.vercel.app/carsLimit'),
         },
         {
             path:'/blog',
             element:<Blog></Blog>,
-            loader: ()=> fetch('http://localhost:5000/blogs')
+            loader: ()=> fetch('https://car-craze-server.vercel.app/blogs')
         },
         {
             path:'/login',
@@ -45,7 +45,7 @@ import NotFound from "../components/page/NotFound/NotFound";
         {
           path:'/details/:id',
           element:<PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
-          loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`)
+          loader:({params})=> fetch(`https://car-craze-server.vercel.app/details/${params.id}`)
         },
         {
           path:'/addtoy',
@@ -58,7 +58,7 @@ import NotFound from "../components/page/NotFound/NotFound";
         {
           path:'/update/:id',
           element:<PrivateRoute><UpdateInfo></UpdateInfo></PrivateRoute>,
-          loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`)
+          loader:({params})=> fetch(`https://car-craze-server.vercel.app/details/${params.id}`)
         }
         
       ]

@@ -27,7 +27,6 @@ const CategoryCart = ({ cars }) => {
       }, []);
       
     const { _id, photo, toyName, price, rating } = cars;
-    console.log(cars);
     return (
         <div>
             <Col>

@@ -17,7 +17,7 @@ const UpdateInfo = () => {
             quantity,
             description
         }
-        fetch(`http://localhost:5000/cars/${loadedInfo._id}`,{
+        fetch(`https://car-craze-server.vercel.app/cars/${loadedInfo._id}`,{
             method:'PUT',
             headers:{
                 'content-type': 'application/json'
