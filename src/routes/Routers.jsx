@@ -31,7 +31,8 @@ import NotFound from "../components/page/NotFound/NotFound";
         },
         {
             path:'/blog',
-            element:<Blog></Blog>
+            element:<Blog></Blog>,
+            loader: ()=> fetch('http://localhost:5000/blogs')
         },
         {
             path:'/login',

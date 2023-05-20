@@ -5,10 +5,22 @@ import Rating from "react-rating";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from 'sweetalert2'
 
 const CategoryCart = ({ cars }) => {
+    const {user} = useContext(AuthContext);
 
+    const handleDetails= ()=>{
+        if (!user){
+            Swal.fire(
+                'Need to Login!',
+                'You have to log in first to view Details',
+                'warning'
+              )
+        }
+    }
     useEffect(() => {
         AOS.init();
         AOS.refresh();
@@ -19,7 +31,9 @@ const CategoryCart = ({ cars }) => {
     return (
         <div>
             <Col>
-                <Card data-aos="fade-left">
+                <Card data-aos="fade-down"
+                    data-aos-easing="linear"
+                    data-aos-duration="1500">
                     <div className="crop-container">
                         <Card.Img variant="top" src={photo} className="w-100 img-fluid" />
                     </div>
@@ -36,7 +50,7 @@ const CategoryCart = ({ cars }) => {
                                 />
                             </div>
                         </Card.Text>
-                        <Link to={`/details/${_id}`}><Button variant="primary">Details</Button></Link>
+                        <Link to={`/details/${_id}`}><Button onClick={handleDetails} variant="primary">Details</Button></Link>
                     </Card.Body>
                 </Card>
             </Col>

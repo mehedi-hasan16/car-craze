@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import Swal from 'sweetalert2'
 import { Helmet } from "react-helmet";
@@ -10,13 +10,11 @@ const Signup = () => {
     const {createUser} = useContext(AuthContext)
     const [accecpted, setACcecpted] = useState(false);
     const [error, setError] = useState('')
-    // const [success, setSuccess] =useState('')
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleRegister = event =>{
         event.preventDefault();
         setError('')
-        // setSuccess('')
         const form = event.target;
         const name = form.fullName.value;
         const photoUrl = form.photoUrl.value;
@@ -28,15 +26,19 @@ const Signup = () => {
         .then((result)=>{
             form.reset('');
             updateUser(result.user, name, photoUrl)
-            // toast("Account Created Successfull")
-            Swal.fire(
-                'Success!',
-                'Your account created successfully',
-                'success'
-              )
-            // setSuccess("Account Created Successfull");
-            // location.reload();
-            navigate('/login');
+            
+            Swal.fire({
+                title: 'Success!',
+                text: "Your account created successfully",
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                    // navigate('/');
+                }
+              })
         })
         .catch((error)=>{
             setError(error.message);
@@ -93,7 +95,6 @@ const Signup = () => {
                 <Form.Text>
                     Already have an Account? <Link to='/login'>Login</Link>
                     <div className="text-center text-danger">{error}</div> 
-                    {/* <div className="text-center text-success">{success}</div>  */}
                 </Form.Text>
             </Form>
         </div>

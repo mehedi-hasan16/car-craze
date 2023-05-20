@@ -7,9 +7,8 @@ import { Link, useLoaderData } from "react-router-dom";
 const ToyDetails = () => {
     const singleToy = useLoaderData();
     const { toyName, sellerName, sellerEmail, rating, category, description, photo, price, quantity } = singleToy;
-    console.log(singleToy);
     return (
-        <div className="container my-4">
+        <div className="container my-4 min-vh-100">
             <div className="card mb-3">
                 <div className="row g-0">
                     <div className="col-md-4">

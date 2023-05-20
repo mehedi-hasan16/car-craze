@@ -24,7 +24,7 @@ const NavigationBar = () => {
             <Navbar bg="light" expand="lg">
                 <Container >
                     <img src={logo} alt="" className="me-2" style={{ width: '80px' }} />
-                    <Navbar.Brand href="/">Car Craze</Navbar.Brand>
+                    <Navbar.Brand href="/" className="fw-bold fs-2">Car Craze</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav

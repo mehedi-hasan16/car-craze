@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const pageFrom = location.state?.from?.pathname ||'/';
-    const [error, setError]= useState([])
+    const [error, setError]= useState('')
 
     const handleSubmit= event =>{
         event.preventDefault();

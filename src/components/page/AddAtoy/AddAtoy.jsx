@@ -7,12 +7,17 @@ import { Helmet } from "react-helmet";
 const AddAtoy = () => {
     const {user} = useContext(AuthContext);
     const [selectedItem, setSelectedItem] = useState("Select category");
-    const [error, setError] = useState(null)
+    const [error, setError] = useState('')
+    const [catError, setCatError] = useState('')
+    const [ratingError, setRatingError] =useState('')
     const handleSelect = (eventKey, event) => {
         setSelectedItem(event.target.text);
     };
 
     const handleSubmit =event =>{
+        setError('');
+        setCatError('');
+        setRatingError('');
         event.preventDefault();
         const form = event.target;
         const sellerName = form.sellerName.value;
@@ -25,12 +30,18 @@ const AddAtoy = () => {
         const quantity = form.quantity.value;
         const description = form.description.value; 
 
-       if (rating < 0 || rating > 5 || price< 0 || quantity < 0){
-        alert('please enter positive number');
+//field validation 
+        const numberRegex = /^[1-5](\.\d+)?$/;
+       if ( price < 0 || quantity < 0){
+        setError('Please Enter Positive Number');
         return;
        }
        else if(category === "Select category"){
-        setError('Please Select Category');
+        setCatError('Please Select Category');
+        return;
+       }
+       else if (!numberRegex.test(rating)){
+        setRatingError('Rating must be 1-5')
         return;
        }
         const toyData ={
@@ -112,7 +123,7 @@ const AddAtoy = () => {
                                     <Dropdown.Item >Regular Car</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            <span className="text-danger">{error}</span>
+                            <span className="text-danger">{catError}</span>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -124,7 +135,8 @@ const AddAtoy = () => {
                     <Col>
                         <Form.Group className="mb-3">
                             <Form.Label>Rating</Form.Label>
-                            <Form.Control type="number" name="rating" placeholder="Rating should be 1-5" required />
+                            <Form.Control type="text" name="rating" placeholder="Rating should be 1-5" required />
+                            <span className="text-danger">{ratingError}</span>
                         </Form.Group>
                     </Col>
                     <Col>
@@ -141,6 +153,7 @@ const AddAtoy = () => {
                     </Col>
 
                 </Row>
+                <p className="text-center text-danger">{error}</p>
                 <div className="d-flex justify-content-center">
                 <Button variant="primary" type="submit">
                     Add Toy
